@@ -77,7 +77,7 @@ exports.forgotPassword= async (req, res)=>{
     const user=await User.findOne({email})
      
     if(!user){
-        res.status(400).json({message: 'user not found'})
+       return res.status(400).json({message: 'user not found'})
     }
 
     const resetToken= crypto.randomBytes(20).toString('hex')  // what now happening is now create a random string string to hidden the password like hash

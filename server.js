@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express= require('express');
 const connectDB = require('./config/db')
 const cors= require('cors')
@@ -24,8 +25,8 @@ app.use('/uploads', express.static('uploads'))
 
 connectDB()
 
-const port=5000;
+const PORT= process.env.PORT || 5000
 
-app.listen(port,()=>{
-   console.log(`server is run on port ${port}`)
+app.listen(PORT,()=>{
+   console.log(`server is run on port ${PORT}`)
 })

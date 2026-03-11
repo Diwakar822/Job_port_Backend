@@ -96,13 +96,18 @@ exports.forgotPassword= async (req, res)=>{
 
         // service: 'Gmail',
         host: 'smtp.gmail.com',
-        port: 465,
+        port: 587,
+        secure: false,
         auth: {
 
             user: 'lokeshbsccomputerscience@gmail.com',
             pass: 'vxfh cfcm rlgb waug'    // google password
 
-        }
+        },
+        tls: {
+        rejectUnauthorized: false // Helps avoid handshake errors on cloud servers
+    },
+    connectionTimeout: 10000,
     });
 
     transporter.verify(function(error, success){

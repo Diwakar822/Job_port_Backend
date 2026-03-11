@@ -102,7 +102,7 @@ exports.forgotPassword= async (req, res)=>{
         }
     });
 
-    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+    const resetUrl = `https://careeratextraatech.netlify.app/reset-password/${resetToken}`;
 
     const mailoption={
         to:user.email,

@@ -4,6 +4,7 @@ const  Jwt = require('jsonwebtoken')
 const crypto=require('crypto')
 const nodemailer=require('nodemailer')
 const { url } = require('inspector')
+const { error } = require('console')
 
 exports.registeruser=async (req, res) => {
     try{
@@ -93,7 +94,9 @@ exports.forgotPassword= async (req, res)=>{
 
     const transporter = nodemailer.createTransport({
 
-        service: 'Gmail',
+        // service: 'Gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
         auth: {
 
             user: 'lokeshbsccomputerscience@gmail.com',
@@ -101,6 +104,14 @@ exports.forgotPassword= async (req, res)=>{
 
         }
     });
+
+    transporter.verify(function(error, success){
+        if(error){
+            console.log("Transporter connection error:", error)
+        }else{
+            console.log("Server is ready to take our messages")
+        }
+    })
 
     const resetUrl = `https://careeratextraatech.netlify.app/reset-password/${resetToken}`;
 

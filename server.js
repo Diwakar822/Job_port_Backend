@@ -11,7 +11,7 @@ const jobApplicationRoutes=require('./router/jobApplicationRoutes')
 const app=express();
 
 app.use(cors({
-   origin: "http://localhost:5173",
+   origin: "https://careeratextraatech.netlify.app/",
    credentials: true
 }))
 

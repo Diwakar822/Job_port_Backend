@@ -96,8 +96,8 @@ exports.forgotPassword= async (req, res)=>{
 
         // service: 'Gmail',
         host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
+        port: 465,
+        secure: true,
         auth: {
 
             user: 'lokeshbsccomputerscience@gmail.com',
@@ -105,9 +105,13 @@ exports.forgotPassword= async (req, res)=>{
 
         },
         tls: {
+            ciphers: 'SSLv3',
         rejectUnauthorized: false // Helps avoid handshake errors on cloud servers
     },
-    connectionTimeout: 10000,
+    pool: true,
+    connectionTimeout: 500,
+    greetingTimeout: 20000
+    
     });
 
     transporter.verify(function(error, success){

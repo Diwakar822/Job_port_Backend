@@ -104,23 +104,17 @@ exports.forgotPassword= async (req, res)=>{
             pass: 'vxfh cfcm rlgb waug'    // google password
 
         },
-        tls: {
-            ciphers: 'SSLv3',
-        rejectUnauthorized: false // Helps avoid handshake errors on cloud servers
-    },
-    pool: true,
-    // connectionTimeout: 500,
-    greetingTimeout: 20000
-    
+         connectionTimeout: 20000,
+         greetingTimeout: 20000
     });
 
-    transporter.verify(function(error, success){
-        if(error){
-            console.log("Transporter connection error:", error)
-        }else{
-            console.log("Server is ready to take our messages")
-        }
-    })
+    // transporter.verify(function(error, success){
+    //     if(error){
+    //         console.log("Transporter connection error:", error)
+    //     }else{
+    //         console.log("Server is ready to take our messages")
+    //     }
+    // })
 
     const resetUrl = `https://careeratextraatech.netlify.app/reset-password/${resetToken}`;
 

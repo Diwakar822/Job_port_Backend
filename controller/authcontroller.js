@@ -5,6 +5,9 @@ const crypto=require('crypto')
 const nodemailer=require('nodemailer')
 const { url } = require('inspector')
 const { error } = require('console')
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 exports.registeruser=async (req, res) => {
     try{
@@ -118,7 +121,7 @@ exports.forgotPassword= async (req, res)=>{
 
     const mailoption={
         to:user.email,
-        from: 'lokeshbsccomputerscience@gmail.com',
+        from: 'onboarding@resend.dev',
         subject: 'Password Reset Request | Extraa Technologies',
         html:`<div style="font-family: sans-serif; background-color: #f4f4f4; padding: 40px 10px;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #1a1a0d; border-radius: 12px; overflow: hidden; color: #d8d8d1;">

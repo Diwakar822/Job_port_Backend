@@ -109,7 +109,7 @@ exports.forgotPassword= async (req, res)=>{
         rejectUnauthorized: false // Helps avoid handshake errors on cloud servers
     },
     pool: true,
-    connectionTimeout: 500,
+    // connectionTimeout: 500,
     greetingTimeout: 20000
     
     });

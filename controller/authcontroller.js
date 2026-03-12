@@ -95,33 +95,11 @@ exports.forgotPassword= async (req, res)=>{
    
     // now currently working is email sending 
 
-    const transporter = nodemailer.createTransport({
-
-        // service: 'Gmail',
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        auth: {
-
-            user: 'lokeshbsccomputerscience@gmail.com',
-            pass: 'vxfh cfcm rlgb waug'    // google password
-
-        }
-    });
-
-    // transporter.verify(function(error, success){
-    //     if(error){
-    //         console.log("Transporter connection error:", error)
-    //     }else{
-    //         console.log("Server is ready to take our messages")
-    //     }
-    // })
-
     const resetUrl = `https://careeratextraatech.netlify.app/reset-password/${resetToken}`;
 
-    const mailoption={
-        to:user.email,
+    await resend.emails.send({
         from: 'onboarding@resend.dev',
+        to:user.email,
         subject: 'Password Reset Request | Extraa Technologies',
         html:`<div style="font-family: sans-serif; background-color: #f4f4f4; padding: 40px 10px;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #1a1a0d; border-radius: 12px; overflow: hidden; color: #d8d8d1;">
@@ -153,9 +131,8 @@ exports.forgotPassword= async (req, res)=>{
         </div>
     </div>
     `
-    }
+    })
            
-    await transporter.sendMail(mailoption)
 
     res.status(200).json({message: 'reset mail send to your emial ID'})
     

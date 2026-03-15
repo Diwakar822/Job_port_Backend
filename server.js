@@ -5,6 +5,7 @@ const cors= require('cors')
 const authrouter=require('./router/authrouter')
 const jobRoutes=require('./router/jobRoutes')
 const jobApplicationRoutes=require('./router/jobApplicationRoutes')
+const saveJobrouter=require('./router/saveJobrouter')
 
 
 
@@ -21,6 +22,7 @@ app.use(express.json())
 app.use('/api/auth', authrouter)
 app.use('/api/jobs', jobRoutes)
 app.use('/api/application', jobApplicationRoutes)
+app.use('/api/jobs', saveJobrouter)
 
 app.use('/uploads', express.static('uploads'))
 

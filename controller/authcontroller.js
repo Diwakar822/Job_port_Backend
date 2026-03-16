@@ -15,7 +15,7 @@ exports.registeruser=async (req, res) => {
         const{name, email,password,role}=req.body;
         const makeit=await User.findOne({email})
         if(makeit){
-            return res.status(400).json({message:'pleases login'})
+            return res.status(400).json({message:'Your Already register pleases login'})
         }
          
         const hashpassword=await bcrypt.hash(password,10)
